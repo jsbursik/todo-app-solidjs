@@ -9,7 +9,7 @@ export const getAllTasks = async (): Promise<ITask[]> => {
 }
 
 export const addTask = async (task: ITask): Promise<ITask> => {
-  const res = await fetch(`${baseURL}/tasks/${task.id}`, {
+  const res = await fetch(`${baseURL}/tasks`, {
     method: 'POST',
     headers: {
       "Content-Type":"application/json"

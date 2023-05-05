@@ -1,11 +1,14 @@
 // @refresh reload
-import { Suspense } from "solid-js";
+import { Suspense, createSignal } from "solid-js";
 import { Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title } from "solid-start";
+import ThemeSelector from "./components/ThemeSelector";
 import "./root.css";
 
 export default function Root() {
+  const [theme, setTheme] = createSignal("garden");
+
   return (
-    <Html lang="en" data-theme="halloween">
+    <Html lang="en" data-theme={theme()}>
       <Head>
         <Title>Todo App - SolidJS</Title>
         <Meta charset="utf-8" />
@@ -17,6 +20,7 @@ export default function Root() {
             <Routes>
               <FileRoutes />
             </Routes>
+            <ThemeSelector setTheme={setTheme} />
           </ErrorBoundary>
         </Suspense>
         <Scripts />

@@ -1,12 +1,13 @@
 import { ITask } from "types/tasks";
-import { For } from "solid-js";
+import { Accessor, For, Signal } from "solid-js";
 import Task from "./Task";
 
 interface TodoListProps {
-  tasks: ITask[];
+  tasks: () => ITask[];
+  updateTasks: () => Promise<void>;
 }
 
-export default function TodoList({ tasks }: TodoListProps) {
+export default function TodoList({ tasks, updateTasks }: TodoListProps) {
   return (
     <div class="overflow-x-auto">
       <table class="table w-full">
@@ -17,7 +18,7 @@ export default function TodoList({ tasks }: TodoListProps) {
           </tr>
         </thead>
         <tbody>
-          <For each={tasks}>{(task) => <Task task={task} />}</For>
+          <For each={tasks()}>{(task) => <Task task={task} updateTasks={updateTasks} />}</For>
         </tbody>
       </table>
     </div>
