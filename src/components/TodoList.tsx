@@ -14,7 +14,7 @@ export default function TodoList({ tasks, updateTasks }: TodoListProps) {
         <thead>
           <tr>
             <th class="w-full">Task</th>
-            <th>Actions</th>
+            <th class="text-right">Actions</th>
           </tr>
         </thead>
         <tbody>
